@@ -12,11 +12,9 @@ on:
         default: "Releasing fixes for bugs"
 jobs:
   create-release:
-    name: Version ${{ github.event.inputs.Version }} w/ Title ${{ github.event.inputs.Title }}
+    name: ${{ github.event.inputs.Version }}/${{ github.event.inputs.Title }}
     runs-on: ubuntu-latest
-    environment:
-      name: 'Production'
-      url: "some url"
+    environment: Production
     steps:
       - uses: actions/checkout@v3
 
