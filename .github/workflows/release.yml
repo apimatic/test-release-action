@@ -13,7 +13,7 @@ on:
         default: "Releasing fixes for bugs"
 jobs:
   create-release:
-    name: ${{ github.event.inputs.Version }}/(${{ github.event.inputs.Title }})
+    name: Creating release version ${{ github.event.inputs.Version }}
     runs-on: ubuntu-latest
     environment: Production
     steps:
