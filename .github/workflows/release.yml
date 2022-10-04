@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       Version:
-        description: "Version to be released in format: x.y.z, where x => major version, y => minor version and z => patch version, Current is: 0.1.1"
+        description: "Version to be released in format: x.y.z, where x => major version, y => minor version and z => patch version"
         required: true
-        default: "0.1.1"
+        default: "0.1.0"
       Title:
         description: "Title of the release"
         required: true
@@ -13,7 +13,9 @@ on:
 jobs:
   create-release:
     runs-on: ubuntu-latest
-    environment: 'Production'
+    environment:
+      name: 'Production'
+      url: "some url"
     steps:
       - uses: actions/checkout@v3
 
