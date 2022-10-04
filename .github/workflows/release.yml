@@ -1,5 +1,5 @@
 name: Create Release
-run-name: ${{ github.event.inputs.Version }}/(${{ github.event.inputs.Title }})
+run-name: ${{ github.event.inputs.Title }}(${{ github.event.inputs.Version }})
 on:
   workflow_dispatch:
     inputs:
