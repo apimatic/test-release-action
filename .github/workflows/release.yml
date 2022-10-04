@@ -12,6 +12,7 @@ on:
         default: "Releasing fixes for bugs"
 jobs:
   create-release:
+    name: Releasing Version ${{ github.event.inputs.Version }} with Title ${{ github.event.inputs.Title }}
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
