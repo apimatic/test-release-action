@@ -1,16 +1,11 @@
 name: Create Release
-run-name: ${{ github.event.inputs.Title }} (${{ github.event.inputs.Version }})
+run-name: Release (${{ github.event.inputs.Version }})
 on:
   workflow_dispatch:
     inputs:
       Version:
         description: "Version to be released in format: x.y.z, where x => major version, y => minor version and z => patch version"
         required: true
-        default: "0.1.0"
-      Title:
-        description: "Title of the release"
-        required: true
-        default: "Releasing fixes for bugs"
 jobs:
   create-release:
     name: Creating release version ${{ github.event.inputs.Version }}
@@ -25,11 +20,11 @@ jobs:
         with:
           github_token: ${{ secrets.TAGS_TOKEN }}
           custom_tag: ${{ github.event.inputs.Version }}
-          tag_prefix: ""
+          tag_prefix: "v"
 
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: ${{ github.event.inputs.Title }}
+          name: Release Version ${{ github.event.inputs.Version }}
           body: ${{ steps.tag_version.outputs.changelog }}
